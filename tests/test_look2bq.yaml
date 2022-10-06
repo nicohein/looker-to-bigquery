@@ -1,5 +1,5 @@
 looktobqtask:
   look2bq:
     qid : "Rk0daUlQJTRlDwFrAGZN7E"
-    destination: "bmg-bigquery-prod.looker_system_activity.looker_user_data_test"
+    destination: "project.dataset.looker_user_data_test"
     if_exists: "replace"

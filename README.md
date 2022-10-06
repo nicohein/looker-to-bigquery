@@ -25,7 +25,7 @@ export LOOKER_BASE_URL=<looker_url>
 export LOOKER_CLIENT_ID=<client_id>
 export LOOKER_CLIENT_SECRET=<secret>
 export GOOGLE_PROJECT=project-name
-export GOOGLE_IMPERSONATE_SERVICE_ACCOUNT=service-acc-name@project-name.iam.gserviceaccount.com
+export GOOGLE_IMPERSONATE_SERVICE_ACCOUNT=looker-system-activity-export@project-name.iam.gserviceaccount.com
 ```
 
 - Modify the config.yaml file according to requirements
@@ -48,9 +48,11 @@ pytest -vv test_looker.py
 
 To check with your own user:
 
-```
+```bash
 unset GOOGLE_IMPERSONATE_SERVICE_ACCOUNT
 ```
+
+Please also be aware to adjust the test code for your own environment. Some values are not parameterized in the environment yet.
 
 ## Docker Testing 🐋
 
@@ -64,7 +66,7 @@ docker run -v ~/.config/gcloud:/root/.config/gcloud  \
     -e LOOKERSDK_CLIENT_SECRET=<secret> \
     -e LOOKERSDK_CLIENT_ID=<client_id> \
     -e GOOGLE_PROJECT=project-name
-    -e GOOGLE_IMPERSONATE_SERVICE_ACCOUNT=looker-sys-activity-export-srv@project-name.iam.gserviceaccount.com
+    -e GOOGLE_IMPERSONATE_SERVICE_ACCOUNT=looker-system-activity-export@project-name.iam.gserviceaccount.com
     -p 8080:8080 \
     looker-to-bigquery
 ```
@@ -82,12 +84,12 @@ Run URLs:
 
 ```bash
 docker build -f Dockerfile -t looker-to-bigquery .
-docker tag looker-to-bigquery eu.gcr.io/project-name/looker-to-bigquery:0.0.1
-docker tag looker-to-bigquery eu.gcr.io/project-name/looker-to-bigquery:latest
+docker tag looker-to-bigquery container.registry.url/project-name/looker-to-bigquery:0.0.1
+docker tag looker-to-bigquery container.registry.url/project-name/looker-to-bigquery:latest
 gcloud config set project project-name
 gcloud auth configure-docker
-docker push eu.gcr.io/project-name/looker-to-bigquery:0.0.1
-docker push eu.gcr.io/project-name/looker-to-bigquery:latest
+docker push container.registry.url/project-name/looker-to-bigquery:0.0.1
+docker push container.registry.url/project-name/looker-to-bigquery:latest
 ```
 
 ### Test the deployment 🧪
@@ -113,6 +115,7 @@ If you are interested in getting to know the concept design of look2bq read here
 - `Executer`
   - It is used to execute operations using details from input file
   - Currently look2bq only has YamlExecutor
+
 - `Task`
   - It contains set of jobs sequentially when executed
   - Yaml file contains set of tasks

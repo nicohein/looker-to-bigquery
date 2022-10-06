@@ -1,8 +1,8 @@
 bqtesttask:
   look:
     model : "recorded"
-    view : "spotify_dma_report"
-    fields : ["spotify_dma_report.artist_name","spotify_dma_report.dma_code"]
+    view : "view_name"
+    fields : ["view_name.field_1","view_name.view_name.field_2"]
     pivots : []
     fill_fields : []
     filters : {}
@@ -21,6 +21,6 @@ bqtesttask:
     query_timezone : ""
 
   bigquery:
-    destination: "bmg-bigquery-prod.looker_system_activity.looker_bigquery_test"
+    destination: "project.dataset.looker_bigquery_test"
     if_exists: "replace"
     

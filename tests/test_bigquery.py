@@ -25,7 +25,7 @@ def test_biquery_credentials(e):
 
 def test_biquery_data(e):
     data = {
-        "destination": "bmg-bigquery-prod.looker_system_activity.looker_bigquery_test",
+        "destination": "project.dataset.looker_bigquery_test",
         'if_exists': 'replace'
     }
     assert e.plan["bqtesttask"]["bigquery"] == data
@@ -39,8 +39,8 @@ def test_execute(e):
     e.execute()
     
     df = pandas_gbq.read_gbq(
-        "SELECT * FROM `bmg-bigquery-prod.looker_system_activity.looker_bigquery_test` LIMIT 10",
-        project_id="bmg-bigquery-prod",
+        "SELECT * FROM `project.dataset.looker_bigquery_test` LIMIT 10",
+        project_id="jobs-project",
     )
     assert type(df) == pd.DataFrame
     assert df.shape[0] > 1

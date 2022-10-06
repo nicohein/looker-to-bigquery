@@ -14,8 +14,8 @@ def e():
 
 def test_look_data(e):
     data = {
-        "qid": "Rk0daUlQJTRlDwFrAGZN7E",
-        "destination": "bmg-bigquery-prod.looker_system_activity.looker_user_data_test",
+        "qid": "QueryIdCodeCopiedFromUrl",
+        "destination": "project.dataset.looker_user_data_test",
         "if_exists": "replace",
     }
     assert data == e.plan["looktobqtask"]["look2bq"]

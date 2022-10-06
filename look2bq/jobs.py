@@ -147,7 +147,7 @@ class BigqueryExporter(Job):
         project_id = parts[0]
         destination_table = ".".join(parts[1:])
         pandas_gbq.context.credentials = self._get_impersonated_credentials()  # null if impersonation not set
-        jobs_project_id = os.environ.get("GOOGLE_PROJECT", "bmg-bigquery-prod")
+        jobs_project_id = os.environ.get("GOOGLE_PROJECT")
         pandas_gbq.context.project = jobs_project_id
         if df.shape[0] > 0:
             if if_exists == 'append' and date:
