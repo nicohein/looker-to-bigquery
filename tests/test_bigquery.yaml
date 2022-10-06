@@ -1,0 +1,26 @@
+bqtesttask:
+  look:
+    model : "recorded"
+    view : "view_name"
+    fields : ["view_name.field_1","view_name.view_name.field_2"]
+    pivots : []
+    fill_fields : []
+    filters : {}
+    filter_expression : ""
+    sorts : []
+    limit : ""
+    column_limit : ""
+    total : False
+    row_total : ""
+    subtotals : []
+    vis_config : {}
+    filter_config : {}
+    visible_ui_sections : ""
+    dynamic_fields : ""
+    client_id : ""
+    query_timezone : ""
+
+  bigquery:
+    destination: "project.dataset.looker_bigquery_test"
+    if_exists: "replace"
+    
