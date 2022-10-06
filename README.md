@@ -82,11 +82,11 @@ Run URLs:
 
 ```bash
 docker build -f Dockerfile -t looker-to-bigquery .
-docker tag looker-to-bigquery eu.gcr.io/project-name/looker-to-bigquery:0.0.6
+docker tag looker-to-bigquery eu.gcr.io/project-name/looker-to-bigquery:0.0.1
 docker tag looker-to-bigquery eu.gcr.io/project-name/looker-to-bigquery:latest
 gcloud config set project project-name
 gcloud auth configure-docker
-docker push eu.gcr.io/project-name/looker-to-bigquery:0.0.6
+docker push eu.gcr.io/project-name/looker-to-bigquery:0.0.1
 docker push eu.gcr.io/project-name/looker-to-bigquery:latest
 ```
 
