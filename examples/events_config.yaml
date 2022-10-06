@@ -1,0 +1,25 @@
+event_upload_task:
+  look:
+    model : "system__activity"
+    view : "event"
+    fields : ["event.id","event.created_time","event.name","user.id","event.category","event.is_admin","event.is_api_call","event.is_looker_employee","event.sudo_user_id","event.count"]
+    pivots : []
+    fill_fields : []
+    filters : {"event.created_date": "1 days ago for 1 days"}
+    filter_expression : ""
+    sorts : ["user.id"]
+    limit : ""
+    column_limit : ""
+    total : False
+    row_total : ""
+    subtotals : []
+    vis_config : {}
+    filter_config : {}
+    visible_ui_sections : ""
+    dynamic_fields : ""
+    client_id : ""
+    query_timezone : ""
+
+  bigquery:
+    destination: "bmg-bigquery-prod.looker_system_activity.events"
+    if_exists: append
