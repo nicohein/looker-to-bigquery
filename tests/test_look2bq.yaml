@@ -1,5 +1,0 @@
-looktobqtask:
-  look2bq:
-    qid : "Rk0daUlQJTRlDwFrAGZN7E"
-    destination: "project.dataset.looker_user_data_test"
-    if_exists: "replace"
